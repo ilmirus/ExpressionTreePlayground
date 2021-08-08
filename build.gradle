@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.255-SNAPSHOT"
+    }
+}
+
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'gl.ShaderKt'
+}
+
+apply plugin: "kotlin"
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.6.255-SNAPSHOT"
+    compile "org.jetbrains.kotlin:kotlin-compiler-embeddable:1.6.255-SNAPSHOT"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileKotlin{
+    kotlinOptions {
+        freeCompilerArgs += "-Xuse-fir"
+//        jvmTarget = "11"
+    }
+}
